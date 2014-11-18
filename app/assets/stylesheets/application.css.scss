@@ -28,6 +28,8 @@
 body {
   font-family: sans-serif;
   background: #5EAFF2;
+  position: relative;
+  top: 50px;
 }
 
 .group:after {
@@ -143,16 +145,6 @@ button.confirm:hover {
 
 button.deny:hover {
   background: green;
-}
-
-/* SIGN IN */
-div.sign-in-div {
-  position: relative;
-  top: 50px;
-}
-
-/* BOARDS */
-div.board-div {
 }
 
 /* LISTS */
