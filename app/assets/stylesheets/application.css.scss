@@ -25,11 +25,16 @@
 @import "bootstrap";
 @import "font-awesome";
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: sans-serif;
   background: #5EAFF2;
   position: relative;
   top: 50px;
+  height: 100%;
 }
 
 .group:after {
@@ -62,7 +67,6 @@ nav.navbar {
 }
 
 h1 {
-  border-bottom: 1px solid gray;
   padding-bottom: 10px;
 }
 
@@ -80,6 +84,8 @@ a.board-link {
   left: 0;
   right: 0;
   z-index: 1031;
+  width: 100%;
+  height: 100%;
 }
 
 .card-modal, .board-modal {
@@ -145,6 +151,53 @@ button.confirm:hover {
 
 button.deny:hover {
   background: green;
+}
+
+/* SESSIONS */
+
+div.sign-in-div {
+  background: white;
+  width: 60%;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+div.sign-up-div {
+  background: white;
+  width: 25%;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+div.left-col {
+  float: left;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+div.right-col {
+  float: left;
+  box-sizing: border-box;
+  width: 50%;
+  border-left: 1px solid gray;
+  padding-left: 25px;
+  margin-top: 20px;
+}
+
+.submit-btn.demo {
+  background: #3abe06;
+  color: white;
+  letter-spacing: 2px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.submit-btn.demo:hover {
+  background: #18850c;
+  cursor: pointer;
 }
 
 /* LISTS */
