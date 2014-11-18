@@ -1,0 +1,11 @@
+<div class="board-modal-backdrop">
+</div>
+<div class="board-modal">
+  <h4><%= board.escape('title') %></h4>
+  Are you sure you want to delete "<%= board.escape('title') %>"?
+  <br>Once it's deleted, it will be gone forever.
+
+  <br><br>
+  <button class="confirm">Yes, delete it.</button>
+  <button class="deny">Nevermind, keep it.</button>
+</div>

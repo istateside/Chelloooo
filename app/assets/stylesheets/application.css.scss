@@ -1,0 +1,296 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.ui.all
+ *= require_tree .
+ */
+
+
+//shade 0 = #5EAFF2 = rgb( 94,175,242) = rgba( 94,175,242,1)
+//shade 1 = #F3F9FE = rgb(243,249,254) = rgba(243,249,254,1)
+//shade 2 = #9BCCF5 = rgb(155,204,245) = rgba(155,204,245,1)
+//shade 3 = #2695F2 = rgb( 38,149,242) = rgba( 38,149,242,1)
+//shade 4 = #0284F0 = rgb(  2,132,240) = rgba(  2,132,240,1)
+
+
+
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+  font-family: sans-serif;
+  background: #5EAFF2;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+
+ul.item-list.list-group {
+  margin: 0;
+}
+
+nav.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000;
+}
+
+.content {
+  position: relative;
+  top: 70px;
+  padding: 5px 15px 15px 15px;
+  background: white;
+  width: 90%;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: none;
+}
+
+h1 {
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+}
+
+a.board-link {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card-modal-backdrop, .board-modal-backdrop {
+  background-color: black;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1031;
+}
+
+.card-modal, .board-modal {
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  z-index: 1032;
+  background-color: rgb(240, 240, 240);
+  border-radius: 3px;
+  padding: 15px;
+}
+
+.board-modal {
+  min-width: 300px;
+  left: 65%;
+  top: 30%;
+}
+
+.card-modal-dismiss {
+  float: right;
+  font-size: 130%;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button.delete-btn {
+  opacity: 0.5;
+  position:relative;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background: none;
+  color: black;
+  font-family: sans-serif;
+  padding: 5px;
+  margin: 0px;
+  float: right;
+  border: none;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+button.delete-btn:hover {
+  display: inline-block;
+  border-radius: 50%;
+  color: red;
+  opacity: 1.0;
+}
+
+button.confirm, button.deny {
+  background: none;
+  font-weight: bold;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: background 200ms;
+}
+
+button.confirm:hover {
+  background: red;
+}
+
+button.deny:hover {
+  background: green;
+}
+
+/* SIGN IN */
+div.sign-in-div {
+  position: relative;
+  top: 50px;
+}
+
+/* BOARDS */
+div.board-div {
+}
+
+/* LISTS */
+div.list-div {
+  background: #9BCCF5;
+  width: 250px;
+  padding: 5px;
+  margin: 5px;
+  vertical-align: top;
+  float: left;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px gray;
+}
+
+div.list-div:hover {
+  background: #2695F2;
+}
+
+p.list-header {
+  margin: 0;
+  padding: 10px 0 5px 15px;
+  font-size: 15px;
+}
+
+h2.list-header {
+  display: inline-block;
+}
+
+div.new-list {
+  display: none;
+  width: 250px;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+  background: #9BCCF5;
+  vertical-align: top;
+  float: left;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px gray;
+}
+
+div.new-list input, div.new-list textarea {
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  padding: 10px 5px;
+  outline: none;
+}
+
+div.new-list input {
+  height: 30px;
+  border-radius: 5px 5px 0 0;
+}
+
+div.new-list textarea {
+  border-top: 1px solid gray;
+  border-radius: 0 0 5px 5px;
+  resize: vertical;
+}
+
+div.new-list .list-submit {
+  background: #00c368;
+  border-radius: 5px;
+  width: 30%;
+  height: auto;
+  display: block;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+input.list-submit:hover {
+  background: #036531;
+  cursor: pointer;
+}
+
+/* CARDS */
+div.card-div {
+  position: relative;
+  transition: position 200ms;
+}
+
+div.card-div:hover {
+  cursor: pointer;
+}
+
+.new-card {
+  display: none;
+}
+
+div.card-div {
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px gray;
+}
+
+div.panel-heading {
+  padding: 0px;
+}
+
+div.panel-heading .delete-btn {
+  right: 2px;
+  top: -40px;
+}
+
+/* ITEMS */
+
+li.item {
+  background: #ffffff;
+  transition: background 400ms;
+}
+
+li.item.done {
+  background: #bebebe;
+}
+
+li.item p {
+  display: inline;
+}
+
+li.item.done p {
+  color: #979797;
+}
+
+li.item span.check {
+  float: right;
+  display: none;
+}
+
+li.item.done span.check {
+  display: block;
+}
+
+.new-item {
+  display: none;
+}
+
+.card-div:hover .new-item {
+  display: block;
+};
