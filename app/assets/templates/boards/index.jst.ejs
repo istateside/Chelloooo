@@ -1,17 +1,27 @@
 <h1>My Boards</h1>
 <ul>
-<% boards.each(function(board) { %>
-<li data-id="<%= board.escape('id') %>">
-  <a
-    href="#/board/<%= board.escape('id') %>"
-    class="board-link"><%= board.escape('title') %></a>
-  <button
-    class="delete-btn"
-    type="button"
-    data-id="<%= board.escape('id') %>">&times</button>
-</li>
-<% }); %>
+  <% boards.each(function(board) { %>
+    <li data-id="<%= board.escape('id') %>">
+      <a
+        href="#/board/<%= board.escape('id') %>"
+        class="board-link"><%= board.escape('title') %></a>
+      <button
+        class="delete-btn"
+        type="button"
+        data-id="<%= board.escape('id') %>">&times</button>
+    </li>
+  <% }); %>
 </ul>
 
+<h2>Shared Boards</h2>
+<ul>
+  <% shared_boards.each(function(board) { %>
+    <li data-id="<%= board.escape('id') %>">
+      <a
+        href="#/board/<%= board.escape('id') %>"
+        class="board-link"><%= board.escape('title') %></a>
+    </li>
+  <% }); %>
+</ul>
 
 <p>Select a board, or add a new one by clicking the '+' symbol!</p>

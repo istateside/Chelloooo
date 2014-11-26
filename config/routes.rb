@@ -9,7 +9,7 @@ Chellooo::Application.routes.draw do
     resources :lists, only: [:create, :update, :destroy]
     resources :cards, only: [:create, :update, :destroy, :show]
     resources :items, only: [:create, :update, :destroy]
-    # resources :board_memberships
-    # resources :card_assignments
+    resources :board_memberships, only: [:index, :create]
+    get 'users', to: 'users#search'
   end
 end

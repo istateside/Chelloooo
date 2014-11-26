@@ -6,17 +6,21 @@ Chellooo.Views.BoardsIndex = Backbone.View.extend({
   template: JST['boards/index'],
 
   className: 'boards-index',
+
   events: {
     "click button.delete-btn": "delModal"
   },
+
   render: function() {
     var content = this.template({
-      boards: this.collection
+      boards: this.collection,
+      shared_boards: this.collection.sharedBoards()
     });
 
     this.$el.html(content);
     return this;
   },
+
   delModal: function(event) {
     event.preventDefault();
     var id = $(event.target).data('id');

@@ -3,7 +3,7 @@ Chellooo.Routers.Router = Backbone.Router.extend({
     this.$el = options.$el;
     this._currentView = null;
 
-    var dropDownView = new Chellooo.Views.NewBoardDropdown({
+    var dropDownView = new Chellooo.Views.Dropdown({
       collection: Chellooo.Collections.boards
     })
     $('#add-dropdown').append(dropDownView.render().$el)
@@ -16,14 +16,17 @@ Chellooo.Routers.Router = Backbone.Router.extend({
   },
 
   index: function() {
+    var router = this;
     if (Chellooo.loggedIn) {
-      Chellooo.Collections.boards.fetch();
+      Chellooo.Collections.boards.fetch({
+        success: function() {
+          var view = new Chellooo.Views.BoardsIndex({
+            collection: Chellooo.Collections.boards
+          })
+          router._swapView(view);
 
-      var view = new Chellooo.Views.BoardsIndex({
-        collection: Chellooo.Collections.boards
-      })
-
-      this._swapView(view);
+        }
+      });
     } else {
       return
     }

@@ -18,8 +18,9 @@ module Api
 
     def index
       @boards = current_user.boards
+      @shared = current_user.shared_boards
       if @boards
-        render json: @boards
+        render :index
       else
         render json: {}
       end

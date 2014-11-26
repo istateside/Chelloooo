@@ -1,0 +1,40 @@
+<li>
+  <span class='header'>
+    <a href='#' class='cancel'>
+      <span
+        class='glyphicon glyphicon-chevron-left pull-left'>
+      </span>
+    </a>
+    Invite users!
+  </span>
+</li>
+<li class='divider'></li>
+<li>
+  <form id="invite-user-form" role="form">
+    <div class="form-group">
+      <label>
+        <b>Board:</b>
+      </label>
+      <br>
+      <select class="board-select form-control">
+        <% _.each(Chellooo.Collections.boards.models, function(board) { %>
+          <option data-id="<%= board.id %>"><%= board.escape('title') %></option>
+        <% }); %>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label id="email-label">
+        <b>Email:</b>
+      </label>
+      <br>
+      <input
+        class="form-control"
+        type='text'
+        placeholder='Email'
+        autofocus='true'>
+      </div>
+    <button class='btn btn-success'>Invite!</button>
+  </form>
+</li>
+<li class="notify"></li>

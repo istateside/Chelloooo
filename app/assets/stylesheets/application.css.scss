@@ -14,14 +14,6 @@
  */
 
 
-//shade 0 = #5EAFF2 = rgb( 94,175,242) = rgba( 94,175,242,1)
-//shade 1 = #F3F9FE = rgb(243,249,254) = rgba(243,249,254,1)
-//shade 2 = #9BCCF5 = rgb(155,204,245) = rgba(155,204,245,1)
-//shade 3 = #2695F2 = rgb( 38,149,242) = rgba( 38,149,242,1)
-//shade 4 = #0284F0 = rgb(  2,132,240) = rgba(  2,132,240,1)
-
-
-
 @import "bootstrap";
 @import "font-awesome";
 
@@ -151,6 +143,11 @@ button.confirm:hover {
 
 button.deny:hover {
   background: green;
+}
+
+form#invite-user-form, form#new-board-form {
+  margin: 0 10px;
+  min-width: 200px;
 }
 
 /* SESSIONS */
@@ -306,30 +303,36 @@ div.panel-heading .delete-btn {
 
 /* ITEMS */
 
-li.item {
-  background: #ffffff;
+ul.item-list-items li {
+  background: none;
   transition: background 400ms;
+  margin: 5px 0;
 }
 
-li.item.done {
+ul.item-list-items li.done {
   background: #bebebe;
 }
 
-li.item p {
-  display: inline;
+ul.item-list-items li p {
+  display: inline-block;
+  margin-right: 5px;
 }
 
-li.item.done p {
+ul.item-list-items li:hover {
+  cursor: pointer;
+}
+
+ul.item-list-items li.done p {
   color: #979797;
 }
 
-li.item span.check {
+ul.item-list-items li span.check {
   float: right;
   display: none;
 }
 
-li.item.done span.check {
-  display: block;
+ul.item-list-items li.done span.check {
+  display: inline-block;
 }
 
 .new-item {

@@ -1,8 +1,20 @@
-Chellooo.Views.NewBoardDropdown = Backbone.View.extend({
+Chellooo.Views.Dropdown = Backbone.View.extend({
   attributes: {
     role: 'menu',
     class: 'dropdown-menu add-menu'
   },
+
+  events: {
+    'click .new-board': 'showNewForm',
+    'click .invite-user': 'showInviteForm',
+    'click .cancel': 'hideForm',
+    'submit #new-board-form': 'createBoard',
+    'submit #invite-user-form': 'inviteUser'
+  },
+
+  template: JST['layout/dropdown'],
+  newFormTemplate: JST['layout/_new_form'],
+  inviteUserTemplate: JST['layout/_invite_form'],
 
   createBoard: function(event) {
     var view = this;
@@ -19,18 +31,42 @@ Chellooo.Views.NewBoardDropdown = Backbone.View.extend({
     return false;
   },
 
-  events: {
-    'click .new-board': 'showForm',
-    'click .cancel': 'hideForm',
-    'submit form': 'createBoard'
+  inviteUser: function(event) {
+    event.preventDefault();
+    var view = this;
+    var $form = $(event.target);
+    var $emailInput = $form.find('input');
+    var query = $emailInput.val();
+    $.ajax({
+      type: "GET",
+      url: "api/users/",
+      data: { query: query },
+      success: function(resp) {
+        view.createMembership(resp, $form);
+      },
+      error: function(resp) {
+        $($emailInput.parent()).addClass('has-error');
+        $form.find('#email-label').html("<b>Email:</b> User not found!")
+      }
+    })
   },
 
-  template: JST['layout/dropdown'],
-  formTemplate: JST['layout/_form'],
-
-  hideForm: function(event) {
-    this.$el.html(this.template());
-    return false;
+  createMembership: function(resp, $form) {
+    var membership = new Chellooo.Models.BoardMembership()
+    membership.save({
+        user_id: resp.id,
+        board_id: $( "select.board-select option:selected" ).data('id')
+      },
+      {
+        success: function(resp2) {
+          $('.notify').html("Added " + resp.email + "!");
+          $form.find('input').val("");
+        },
+        error: function(resp2) {
+          $('.notify').html("Couldn't add " + resp.email + "!");
+        }
+      }
+    );
   },
 
   render: function() {
@@ -44,8 +80,18 @@ Chellooo.Views.NewBoardDropdown = Backbone.View.extend({
     this.$el.parent().removeClass('open');
   },
 
-  showForm: function() {
-    this.$el.html(this.formTemplate());
+  showNewForm: function() {
+    this.$el.html(this.newFormTemplate());
+    return false;
+  },
+
+  showInviteForm: function() {
+    this.$el.html(this.inviteUserTemplate());
+    return false;
+  },
+
+  hideForm: function(event) {
+    this.$el.html(this.template());
     return false;
   },
 

@@ -5,13 +5,10 @@ window.Chellooo = {
   Routers: {},
   Utils: {},
   initialize: function() {
-    window.Chellooo.boards = new Chellooo.Collections.Boards();
-    Chellooo.boards.fetch();
-
+    Chellooo.Collections.boards = new Chellooo.Collections.Boards()
     Chellooo.router = new Chellooo.Routers.Router({
       "$el": $('div.content')
     });
-
     Backbone.history.start();
   }
 };

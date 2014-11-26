@@ -19,13 +19,10 @@ class User < ActiveRecord::Base
   has_many :boards
   has_many :card_assignments
   has_many :board_memberships
+  has_many :shared_boards, through: :board_memberships, source: :board
 
   attr_reader :password
   after_initialize :ensure_session_token
-
-  def gravatar_url
-    "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email) }"
-  end
 
   def self.find_by_credentials(user_params)
     user = User.find_by_email(user_params[:email])
